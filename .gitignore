@@ -1,0 +1,12 @@
+venv/
+*.png
+.DS_Store
+.idea/
+*.txt
+emojis/
+!/emojis_clear.txt
+!/emojis_list.txt
+
+
+
+
