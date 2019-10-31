@@ -22,12 +22,24 @@ def dist(a, b):
 
 def main():
     init()
-    name = input('Введите имя файла: ')
+    name = input('Enter a filename: ')
     img = Image.open(name)
     a = np.asarray(img)
-    size = tuple(map(int, input(
-        'Размер картинки {0}x{1}. Введите размер ШxВ (в смайликах):'.format(img.size[0], img.size[1])).split()))
-    with open('output.txt', 'w') as fout:
+    operation = input(
+        'Image size is {0}x{1} pts.\n'
+        'Enter "dec x" to decrease size by x times\n'
+        'Enter "man w h" to get image with size w h (in chars): '.format(
+            img.size[0], img.size[1]
+        )
+    )
+    if operation[:3] == 'dec':
+        times = float(operation.split()[1])
+        size = tuple((int(img.size[0] / times), int(img.size[1] / times)))
+    else:
+        size = tuple(map(int, operation.split()[1:]))
+
+    with open(input('Enter path to output file: '), 'w') as fout:
+        print('Wait a bit...')
         for i in range(size[1]):
             for j in range(size[0]):
                 x = j * img.size[0] // size[0]
