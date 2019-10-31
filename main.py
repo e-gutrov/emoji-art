@@ -17,7 +17,7 @@ def init():
 
 
 def dist(a, b):
-    return sum(map(lambda x, y: abs(x - y)**2, a, b))
+    return sum(map(lambda x, y: (x - y)**2, a, b))
 
 
 def main():
